@@ -1,14 +1,6 @@
-/* globals API_ENDPOINT, atob, localStorage */
+/* globals API_ENDPOINT, localStorage */
 import { request, plugins } from 'popsicle'
-
-function decodeJwt (jwt) {
-  let [encodedHeader, encodedClaims, signature] = jwt.split('.')
-  let [header, claims] = [
-    JSON.parse(atob(encodedHeader)),
-    JSON.parse(atob(encodedClaims))
-  ]
-  return { header, claims, signature }
-}
+import { decodeJwt } from 'src/jwt'
 
 function post (url, body, headers = {}) {
   return new Promise((resolve, reject) => {
@@ -45,6 +37,9 @@ const Api = {
   },
   newJob (data) {
     return post(`${API_ENDPOINT}/users/${this.userId}/jobs`, data, this.authHeader)
+  },
+  newEntry (jobId, data) {
+    return post(`${API_ENDPOINT}/users/${this.userId}/jobs/${jobId}/entries`, data, this.authHeader)
   }
 }
 export default Api
