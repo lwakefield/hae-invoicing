@@ -120,7 +120,7 @@ const session = {
     return new Promise((resolve, reject) => {
       let [userId, jobId] = [this.user.id, this.jobs[0].id]
       r.post(`http://localhost:3000/users/${userId}/jobs/${jobId}/entries`, {
-        body: {summary: randStr(), duration: 120},
+          body: {summary: randStr(), duration: 120, createdAt: Date.now()},
         headers: {
           Authorization: `Bearer ${session.user.authToken}`
         },
