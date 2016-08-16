@@ -1,11 +1,17 @@
 <template>
   <form @submit.prevent>
-    <input type="text" name="job-title"
+    <label class="title">Job Title:
+      <input type="text" name="job-title"
       v-model="title" placeholder="Job title">
-    <input type="number" name="job-hourly-rate" step="0.01"
+    </label>
+    <label class="hourly-rate">Hourly Rate:
+      <input type="number" name="job-hourly-rate" step="0.01"
       v-model="hourlyRate" placeholder="$70/h">
-    <input type="number" name="job-tax-rate" step="0.001"
+    </label>
+    <label class="tax-rate">Tax Rate:
+      <input type="number" name="job-tax-rate" step="0.001"
       v-model="taxRate" placeholder="5.5%">
+    </label>
     <button @click="new()">New Job</button>
   </form>
 </template>
@@ -36,13 +42,17 @@ form {
   justify-content: space-between;
   flex-flow: row nowrap;
   margin-bottom: 1rem;
-  align-items: center;
+  align-items: flex-end;
 }
-input[name="job-title"] {
+.title {
   flex-grow: 1;
 }
-input[name="job-hourly-rate"],
-input[name="job-tax-rate"],
+label {
+  display: flex;
+  flex-flow: column;
+}
+.hourly-rate,
+.tax-rate,
 button {
   width: 7rem;
 }
