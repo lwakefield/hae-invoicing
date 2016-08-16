@@ -10,7 +10,6 @@ function post (url, body, headers = {}) {
     .catch(reject)
   })
 }
-// eslint-disable-next-line
 function get (url, headers = {}) {
   return new Promise((resolve, reject) => {
     request({ method: 'GET', url, headers })
@@ -34,6 +33,9 @@ const Api = {
   },
   login (username, password) {
     return post(`${API_ENDPOINT}/login/`, {username, password})
+  },
+  getAllJobs () {
+    return get(`${API_ENDPOINT}/users/${this.userId}/jobs`, this.authHeader)
   },
   newJob (data) {
     return post(`${API_ENDPOINT}/users/${this.userId}/jobs`, data, this.authHeader)

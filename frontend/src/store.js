@@ -1,5 +1,6 @@
 /* globals localStorage */
 import { decodeJwt } from 'src/jwt'
+import Api from 'src/api'
 
 const store = {
   authToken: localStorage.authToken,
@@ -7,38 +8,9 @@ const store = {
     if (!this.authToken) return undefined
     return decodeJwt(this.authToken).claims
   },
-  jobs: [
-    {
-      title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      hourlyRate: 100,
-      taxRate: 5.5,
-      entries: [
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()}
-      ]
-    },
-    {
-      title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      hourlyRate: 100,
-      taxRate: 5.5,
-      entries: [
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()}
-      ]
-    },
-    {
-      title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      hourlyRate: 100,
-      taxRate: 5.5,
-      entries: [
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()},
-        {summary: 'Lorem ipsum dolor sit amet.', duration: 90, createdAt: Date.now()}
-      ]
-    }
-  ]
+  jobs: []
 }
+
+Api.getAllJobs().then(v => { store.jobs = v })
 
 export default store

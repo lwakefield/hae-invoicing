@@ -20,6 +20,7 @@ export default {
     logout () {
       localStorage.removeItem('authToken')
       this.Store.authToken = ''
+      this.Store.jobs = []
       this.$router.go('login')
     }
   }
