@@ -1,11 +1,20 @@
 <template>
   <form @submit.prevent>
-    <input type="text" name="entry-summary"
+    <label class="summary">
+      Summary:
+      <input type="text" name="entry-summary"
       v-model="summary" placeholder="Entry summary">
-    <input type="number" name="entry-duration"
-      v-model="duration" placeholder="90m">
-    <input type="date" name="entry-date"
-      v-model="date">
+    </label>
+    <label class="summary">
+      Duration(m):
+      <input type="number" name="entry-duration"
+        v-model="duration" placeholder="90m">
+    </label>
+    <label class="date">
+      Date:
+      <input type="date" name="entry-date"
+        v-model="date">
+    </label>
     <button @click="new()">New Entry</button>
   </form>
 </template>
@@ -33,5 +42,24 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-flow: row nowrap;
+  margin-bottom: 1rem;
+}
+label {
+  display: flex;
+  flex-flow: column;
+}
+.summary {
+  flex-grow: 1;
+}
+.duration,
+.date,
+button {
+  width: 7rem;
+}
 </style>

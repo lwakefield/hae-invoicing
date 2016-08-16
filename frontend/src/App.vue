@@ -37,23 +37,45 @@ export default {
 </script>
 
 <style>
+@import 'https://fonts.googleapis.com/css?family=Work+Sans';
 html {
   height: 100%;
 }
-
 body {
   display: flex;
   align-items: center;
   flex-flow: column;
   height: 100%;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  color: #333
+  font-family: 'Work Sans', sans-serif;
+  color: #333;
+  margin: 0;
+  font-size: 18px;
+}
+* {
+  box-sizing: border-box;
 }
 
 .app {
-  background-color: #eee;
-  max-width: 32rem;
+  border: 1px solid #eee;
+  max-width: 48rem;
   width: 100%;
   padding: 1rem;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  height: 2rem;
+}
+input {
+  background-color: #fdfdfd;
+  border: 2px solid #eee;
+}
+button {
+  border: 2px solid #84b7da;
+  background-color: #84b7da;
+  color: #eee;
 }
 </style>

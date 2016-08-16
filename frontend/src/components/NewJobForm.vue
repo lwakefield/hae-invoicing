@@ -12,15 +12,11 @@
 
 <script>
 import Api from 'src/Api'
-// import Store from 'src/Store'
 
 export default {
   data () {
     return { title: '', hourlyRate: '', taxRate: '' }
   },
-  computed: {},
-  ready () {},
-  attached () {},
   methods: {
     new () {
       let {title, hourlyRate, taxRate} = this
@@ -34,5 +30,21 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+input[name="job-title"] {
+  flex-grow: 1;
+}
+input[name="job-hourly-rate"],
+input[name="job-tax-rate"],
+button {
+  width: 7rem;
+}
+
 </style>

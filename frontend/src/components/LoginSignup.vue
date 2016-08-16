@@ -42,5 +42,17 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
+form {
+  display: flex;
+  flex-flow: column;
+}
+label {
+  display: flex;
+  flex-flow: column;
+}
+label,
+button {
+  margin-bottom: 1rem;
+}
 </style>

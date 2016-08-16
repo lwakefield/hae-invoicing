@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>HER</h1>
+    <h1>HAE</h1>
     <div v-if="Store.authToken">
       <span>Hello {{ Store.claims.username }}</span>
       <button @click="logout()">Logout</button>
@@ -36,6 +36,8 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
 }
 </style>
