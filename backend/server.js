@@ -4,6 +4,7 @@ import config from './config'
 import BodyParser from 'body-parser'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import cors from 'cors'
 
 const db = knex({
   client: 'sqlite3',
@@ -32,6 +33,7 @@ db.schema.dropTableIfExists('users')
 
 const app = express()
 app.use(BodyParser.json())
+app.use(cors())
 
 const atob = v => new Buffer(v, 'base64').toString('binary');
 
@@ -110,8 +112,7 @@ app.get('/users/:userId/jobs', auth, (req, res) => {
 })
 
 app.post('/users/:userId/jobs/:jobId/entries', auth, (req, res) => {
-  let {summary, duration} = req.body
-  let createdAt = Date.now()
+  let {summary, duration, createdAt} = req.body
   let jobId = req.params.jobId
   db('entries').insert({summary, duration, createdAt, jobId})
   .then(v => {
