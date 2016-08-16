@@ -11,6 +11,6 @@ const store = {
   jobs: []
 }
 
-Api.getAllJobs().then(v => { store.jobs = v })
+if (store.authToken) Api.getAllJobs().then(v => { store.jobs = v })
 
 export default store
