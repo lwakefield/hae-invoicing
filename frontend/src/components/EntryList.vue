@@ -1,28 +1,46 @@
 <template>
   <div class="list">
     <div v-for="e of job.entries" class="entry">
-      <input type="checkbox" @click="toggleEntry(e)">
+      <input type="checkbox" @click="toggleEntry(e.id)">
       <div class="entry-summary"> {{ e.summary }}</div>
       <div class="entry-duration"> {{ e.duration }} minutes </div>
       <div class="entry-created-at"> {{ moment(e.createdAt).format('L') }}</div>
     </div>
+    <a v-link="{path: `/invoice?v=${invoiceLink}`}">Create invoice with selected</a>
   </div>
 </template>
 
 <script>
+/* global btoa */
 import moment from 'moment'
 
 export default {
   props: ['jobId'],
-  data () { return { moment, selected: [], lastClicked: undefined } },
+  data () {
+    return {
+      moment,
+      selected: []
+    }
+  },
   computed: {
     job () {
       return this.Store.jobs.find(v => v.id === this.jobId)
+    },
+    invoiceLink () {
+      const data = {
+        jobId: this.jobId,
+        entries: this.selected
+      }
+      return btoa(JSON.stringify(data))
     }
   },
   methods: {
-    toggleEntry (e) {
-
+    toggleEntry (entryId) {
+      if (this.selected.includes(entryId)) {
+        this.selected = this.selected.filter(v => v !== entryId)
+      } else {
+        this.selected.push(entryId)
+      }
     }
   }
 }

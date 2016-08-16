@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>HAE</h1>
+    <h1><a v-link="{path: '/'}">HAE</a></h1>
     <div v-if="Store.authToken">
       <span>Hello {{ Store.claims.username }}</span>
       <button @click="logout()">Logout</button>

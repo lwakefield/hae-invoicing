@@ -22,7 +22,7 @@ export default {
     }
   },
   ready () {
-    const needsAuth = ['/']
+    const needsAuth = ['/', '/invoice']
     this.$router.beforeEach(transition => {
       const authToken = localStorage.authToken
       if (needsAuth.includes(transition.to.path) && !authToken) {
@@ -38,14 +38,10 @@ export default {
 
 <style>
 @import 'https://fonts.googleapis.com/css?family=Work+Sans';
-html {
-  height: 100%;
-}
 body {
   display: flex;
   align-items: center;
   flex-flow: column;
-  height: 100%;
   font-family: 'Work Sans', sans-serif;
   color: #333;
   margin: 0;
@@ -62,6 +58,14 @@ body {
   padding: 1rem;
 }
 
+a,
+a:visited {
+  color: #84b7da;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 button,
 input {
   font: inherit;

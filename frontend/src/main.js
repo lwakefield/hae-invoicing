@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Home from 'components/Home'
 import LoginSignup from 'components/LoginSignup'
+import Invoice from 'components/Invoice'
 
 import Store from 'src/Store'
 
@@ -19,7 +20,8 @@ router.map({
   '/': { component: Home },
   '/login': { component: LoginSignup },
   '/signup': { component: LoginSignup },
-  '/login-signup': { component: LoginSignup }
+  '/login-signup': { component: LoginSignup },
+  '/invoice': { component: Invoice }
 })
 
 router.start(App, '#app')
