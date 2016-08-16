@@ -17,6 +17,8 @@ The stack I have chosen for this challenge, is as follows:
     - [cors](https://www.npmjs.com/package/cors) for handling CORS requests
     - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) for JWTs
 
+The application uses JWT for authentication, as such the backend is completely stateless. The ideal scenario, is that we separate out the backend to run as a number of AWS'. API gateway collecting requests, Lambda processing them and a RDS bringing up the rear.
+
 The backend is written in ES6, so depending on your version of node, it may not work. The best way to get around this is to use [babel-cli](https://babeljs.io/docs/usage/cli/)
 
     # Install babel-cli
